@@ -7,4 +7,5 @@ import org.mapstruct.factory.Mappers;
 public interface UserSimplifiedMapper {
     UserSimplifiedMapper INSTANCE = Mappers.getMapper(UserSimplifiedMapper.class);
     UserSimplified userToSimplifiedUser(User user);
+    User userSimplifiedToUser(UserSimplified userSimplified);
 }

@@ -1,11 +1,13 @@
 package com.example.ssi.user;
 
+import com.example.ssi.Favourite.FavouriteDTO;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Data
@@ -23,6 +25,11 @@ public class User implements UserDetails {
     private String email;
     private String password;
     private Role role;
+    private LocalDate dateOfBirth;
+
+    private boolean isUserBlocked;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<FavouriteDTO> favourites;
 
 
     @Override
