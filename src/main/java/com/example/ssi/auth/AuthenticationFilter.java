@@ -1,6 +1,5 @@
 package com.example.ssi.auth;
 
-import com.example.ssi.token.TokenRepository;
 import com.example.ssi.user.User;
 import com.example.ssi.user.UserRepository;
 import jakarta.servlet.FilterChain;
@@ -24,7 +23,6 @@ public class AuthenticationFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
     private final UserRepository userRepository;
-    private final TokenRepository tokenRepository;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         if (request.getServletPath().contains("/com/example/ssi/auth")) {

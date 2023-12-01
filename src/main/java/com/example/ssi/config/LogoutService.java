@@ -1,7 +1,5 @@
 package com.example.ssi.config;
 
-import com.example.ssi.token.Token;
-import com.example.ssi.token.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LogoutService implements LogoutHandler {
 
-  private final TokenRepository tokenRepository;
 
   @Override
   public void logout(
@@ -28,12 +25,6 @@ public class LogoutService implements LogoutHandler {
       return;
     }
     jwt = authHeader.substring(7);
-    Token storedToken = tokenRepository.findByToken(jwt)
-        .orElse(null);
-    if (storedToken != null) {
-      tokenRepository.delete(storedToken);
-      SecurityContextHolder.clearContext();
-    }
-
+    SecurityContextHolder.clearContext();
   }
 }
