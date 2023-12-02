@@ -38,4 +38,15 @@ public class FavouriteController extends HttpServlet {
         user.deleteFav(repo.findById(id).orElseThrow());
         userRepository.save(user);
     }
+
+    @PostMapping
+    public void addFav(@RequestParam Long productId){
+        User user = (User) SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getPrincipal();
+        FavouriteDTO fav = FavouriteDTO.builder().userId((long) user.getId()).productId(productId).build();
+        repo.save(fav);
+        user.addFav(fav);
+        userRepository.save(user);
+    }
 }

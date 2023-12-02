@@ -35,6 +35,10 @@ public class User implements UserDetails {
         favourites.remove(fav);
     }
 
+    public void addFav(FavouriteDTO fav){
+        favourites.add(fav);
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

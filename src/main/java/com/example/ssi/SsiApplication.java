@@ -71,8 +71,13 @@ public class SsiApplication {
                     .userId(1L)
                     .productId(2L)
                     .build();
+            FavouriteDTO fav3 = FavouriteDTO.builder()
+                    .userId(1L)
+                    .productId(3L)
+                    .build();
             favouriteRepo.save(fav1);
             favouriteRepo.save(fav2);
+            favouriteRepo.save(fav3);
             var admin = RegisterRequest.builder()
                     .firstname("Admin")
                     .lastname("Admin")
