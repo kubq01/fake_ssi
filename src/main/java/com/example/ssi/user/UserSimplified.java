@@ -1,10 +1,12 @@
 package com.example.ssi.user;
 
+import com.example.ssi.Favourite.FavouriteDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -18,4 +20,5 @@ public class UserSimplified {
     private Role role;
     private LocalDate dateOfBirth;
     private boolean isUserBlocked;
+    List<FavouriteDTO> favourites;
 }

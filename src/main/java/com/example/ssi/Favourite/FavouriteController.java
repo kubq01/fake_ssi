@@ -23,6 +23,7 @@ public class FavouriteController extends HttpServlet {
 
     @GetMapping
     public FavouriteDTO getById(@RequestParam Long id){
+        System.out.println(repo.findById(id).orElseThrow());
         return repo.findById(id).orElseThrow();
     }
 }
