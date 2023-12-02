@@ -10,10 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,6 +52,16 @@ public class ProductController extends HttpServlet {
     @GetMapping("allall")
     public List<ProductDTO> getAll(){
         return repo.findAll();
+    }
+
+    @PostMapping
+    public void updateOrAdd(@RequestBody ProductDTO productDTO){
+        repo.save(productDTO);
+    }
+
+    @DeleteMapping
+    public void delete(@RequestBody ProductDTO productDTO){
+        repo.delete(productDTO);
     }
 
 }
