@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController()
 @RequestMapping("/product")
@@ -75,7 +76,9 @@ public class ProductController extends HttpServlet {
         List<ProductDTO> productDTOS = new ArrayList<>();
 
         favs.forEach(favouriteDTO -> {
-            productDTOS.add(repo.findById(favouriteDTO.getProductId()).orElseThrow());
+            Optional<ProductDTO> productDTO = repo.findById(favouriteDTO.getProductId());
+            if(productDTO.isPresent())
+                productDTOS.add(productDTO.orElseThrow());
         });
 
         return productDTOS;
