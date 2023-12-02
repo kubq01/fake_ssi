@@ -41,6 +41,14 @@ public class UserController {
     @PostMapping
     public void updateUser(@RequestBody UserSimplified userSimplified){
         System.out.println(userSimplified.toString());
+        User user = UserSimplifiedMapper.INSTANCE.userSimplifiedToUser(userSimplified);
+        user.setUserBlocked(userSimplified.isUserBlocked());
+        System.out.println(userRepository.save(user));
+    }
+
+    @PostMapping("/password")
+    public void setNewPassword(@RequestBody UserSimplified userSimplified){
+        System.out.println(userSimplified.toString());
         userSimplified.setPassword(passwordEncoder.encode(userSimplified.getPassword()));
         User user = UserSimplifiedMapper.INSTANCE.userSimplifiedToUser(userSimplified);
         user.setUserBlocked(userSimplified.isUserBlocked());
