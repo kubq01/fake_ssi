@@ -64,5 +64,22 @@ public class ProductController extends HttpServlet {
         repo.delete(productDTO);
     }
 
+    @GetMapping("/fav")
+    public List<ProductDTO> getAllFavouriteForUser(){
+        User user = (User) SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        List<FavouriteDTO> favs = user.getFavourites();
+
+        List<ProductDTO> productDTOS = new ArrayList<>();
+
+        favs.forEach(favouriteDTO -> {
+            productDTOS.add(repo.findById(favouriteDTO.getProductId()).orElseThrow());
+        });
+
+        return productDTOS;
+    }
+
 }
 
