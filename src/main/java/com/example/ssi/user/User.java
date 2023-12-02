@@ -29,7 +29,11 @@ public class User implements UserDetails {
 
     private boolean isUserBlocked;
     @OneToMany(fetch = FetchType.EAGER)
-    private List<FavouriteDTO> favourites;
+    List<FavouriteDTO> favourites;
+
+    public void deleteFav(FavouriteDTO fav){
+        favourites.remove(fav);
+    }
 
 
     @Override
