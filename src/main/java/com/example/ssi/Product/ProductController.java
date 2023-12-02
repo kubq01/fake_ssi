@@ -52,5 +52,10 @@ public class ProductController extends HttpServlet {
         return finalProducts;
     }
 
+    @GetMapping("allall")
+    public List<ProductDTO> getAll(){
+        return repo.findAll();
+    }
+
 }
 
