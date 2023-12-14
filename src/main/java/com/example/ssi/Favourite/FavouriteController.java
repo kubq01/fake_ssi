@@ -35,7 +35,10 @@ public class FavouriteController extends HttpServlet {
         User user = (User) SecurityContextHolder.getContext()
                 .getAuthentication()
                 .getPrincipal();
-        user.deleteFav(repo.findById(id).orElseThrow());
+        FavouriteDTO fav = FavouriteDTO.builder().userId((long) user.getId()).productId(id).build();
+        user.deleteFav(fav);
+        System.out.println("Gowno w bazie znalezione: " + repo.findById(id).orElseThrow());
+        System.out.println("Kurwa DTO wygenerowane: " + fav.toString());
         userRepository.save(user);
     }
 

@@ -46,33 +46,33 @@ public class SsiApplication {
                     .categoryId(1L)
                     .name("prod1")
                     .price(100)
-                    .rating(10.8)
+                    .rating(5.0)
                     .build();
             ProductDTO prod2 = ProductDTO.builder()
                     .categoryId(1L)
                     .name("prod2")
                     .price(100)
-                    .rating(10.8)
+                    .rating(3.0)
                     .build();
             ProductDTO prod3 = ProductDTO.builder()
                     .categoryId(1L)
                     .name("prod3")
                     .price(100)
-                    .rating(10.8)
+                    .rating(4.0)
                     .build();
             productRepo.save(prod1);
             productRepo.save(prod2);
             productRepo.save(prod3);
             FavouriteDTO fav1 = FavouriteDTO.builder()
-                    .userId(1L)
+                    .userId(2L)
                     .productId(1L)
                     .build();
             FavouriteDTO fav2 = FavouriteDTO.builder()
-                    .userId(1L)
+                    .userId(2L)
                     .productId(2L)
                     .build();
             FavouriteDTO fav3 = FavouriteDTO.builder()
-                    .userId(1L)
+                    .userId(2L)
                     .productId(3L)
                     .build();
             favouriteRepo.save(fav1);

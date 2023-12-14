@@ -32,7 +32,7 @@ public class User implements UserDetails {
     List<FavouriteDTO> favourites;
 
     public void deleteFav(FavouriteDTO fav){
-        favourites.remove(fav);
+        favourites.removeIf(element -> (element.getUserId() == fav.getUserId()) && (element.getProductId() == fav.getProductId()));
     }
 
     public void addFav(FavouriteDTO fav){
