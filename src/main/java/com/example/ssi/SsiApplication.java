@@ -79,8 +79,8 @@ public class SsiApplication {
             favouriteRepo.save(fav2);
             favouriteRepo.save(fav3);
             var admin = RegisterRequest.builder()
-                    .firstname("Admin")
-                    .lastname("Admin")
+                    .firstName("Admin")
+                    .lastName("Admin")
                     .email("admin@mail.com")
                     .password("password")
                     .role(ADMIN)
@@ -89,8 +89,8 @@ public class SsiApplication {
             System.out.println("Admin token: " + adminToken);
 
             var manager = RegisterRequest.builder()
-                    .firstname("User")
-                    .lastname("User")
+                    .firstName("User")
+                    .lastName("User")
                     .email("user@mail.com")
                     .password("password")
                     .role(USER)
